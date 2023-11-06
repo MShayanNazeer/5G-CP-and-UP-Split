@@ -93,7 +93,7 @@ sim_ran.addService(rspec.Execute(shell="bash", command=invoke_script_str("ran.sh
 gNBCoreLink.addNode(sim_ran)
 
 # Add node that will host the 5G Core Control Virtual Network Functions (AMF, SMF, UPF, etc).
-open5gs = request.RawPC("open5gs")
+open5gs = request.RawPC("open5gs-control")
 open5gs.component_manager_id = GLOBALS.SITE_URN
 open5gs.disk_image = GLOBALS.UBUNTU18_IMG
 #open5gs.docker_extimage = "ubuntu:20.04"
@@ -102,7 +102,7 @@ open5gs.addService(rspec.Execute(shell="bash", command=invoke_script_str("open5g
 gNBCoreLink.addNode(open5gs)
 
 # Add node that will host the 5G Core user/data Virtual Network Functions (AMF, SMF, UPF, etc).
-open5gs = request.RawPC("open5gs")
+open5gs = request.RawPC("open5gs-user")
 open5gs.component_manager_id = GLOBALS.SITE_URN
 open5gs.disk_image = GLOBALS.UBUNTU18_IMG
 #open5gs.docker_extimage = "ubuntu:20.04"
