@@ -92,6 +92,7 @@ sim_ran.hardware_type = params.phystype
 sim_ran.addService(rspec.Execute(shell="bash", command=invoke_script_str("ran.sh")))
 gNBCoreLink.addNode(sim_ran)
 
+
 # Add node that will host the 5G Core Control Virtual Network Functions (AMF, SMF, UPF, etc).
 open5gs = request.RawPC("open5gs-control")
 open5gs.component_manager_id = GLOBALS.SITE_URN
@@ -109,6 +110,14 @@ open5gs.disk_image = GLOBALS.UBUNTU18_IMG
 open5gs.hardware_type = GLOBALS.HWTYPE if params.phystype != "" else params.phystype
 open5gs.addService(rspec.Execute(shell="bash", command=invoke_script_str("open5gs.sh")))
 gNBCoreLink.addNode(open5gs)
+
+# Add node which will run packetRusher
+packRush = request.RawPC("PacketRusher")
+packRush.component_manager_id = GLOBALS.SITE_URN
+packRush.disk_image = GLOBALS.UBUNTU18_IMG"
+packRush.hardware_type = params.phystype 
+packRush.addService(rspec.Execute(shell="bash", command=invoke_script_str("packRush.sh")))
+gNBCoreLink.addNode(packRush)
 
 tour = IG.Tour()
 tour.Description(IG.Tour.MARKDOWN, tourDescription)
