@@ -3,6 +3,8 @@ set -e
 # load config values
 source /local/repository/scripts/setup-config
 
+sudo apt-get update
+
 sudo apt -y install build-essential linux-headers-generic make git wget tar linux-modules-extra-$(uname -r)
 
 wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz && sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz
