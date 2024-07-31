@@ -114,7 +114,7 @@ gNBCoreLink.addNode(open5gs)
 # Add node which will run packetRusher
 packRush = request.RawPC("PacketRusher")
 packRush.component_manager_id = GLOBALS.SITE_URN
-packRush.disk_image = GLOBALS.UBUNTU18_IMG"
+packRush.disk_image = GLOBALS.UBUNTU18_IMG
 packRush.hardware_type = params.phystype 
 packRush.addService(rspec.Execute(shell="bash", command=invoke_script_str("packRush.sh")))
 gNBCoreLink.addNode(packRush)
